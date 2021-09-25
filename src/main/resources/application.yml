@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:mysql://119.91.86.79:3306?serverTimezone=Asia/Shanghai
+    username: MPG
+    password: PtC8KbhEXm8pCfFD
+    driverClassName: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+mybatis:
+  type-aliases-package: com.ghstdio.pairprogram.dao.entity
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+logging:
+  level:
+    web: debug
+    com:
+      template:
+        springtemplate:
+          dao:
+            repository: debug
+
+token:
+  expireDate: 10800000
+  secret: ?????
