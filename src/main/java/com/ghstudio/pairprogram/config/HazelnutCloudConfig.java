@@ -1,0 +1,15 @@
+package com.ghstudio.pairprogram.config;
+
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+@Data
+@Component
+@ConfigurationProperties(prefix = "hazelnut")
+public class HazelnutCloudConfig {
+    private String url;
+    private String appId;
+    private String appSecret;
+    private String templateId;
+}

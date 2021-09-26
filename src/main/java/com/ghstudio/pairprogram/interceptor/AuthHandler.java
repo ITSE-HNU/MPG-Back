@@ -25,10 +25,9 @@ public class AuthHandler implements HandlerInterceptor {
         this.token = token;
     }
 
-    // TODO 设置 token start with
     private String getAuthorizationFromHeader(HttpServletRequest request) {
         final String token = request.getHeader("Authorization");
-        if (token == null || !token.startsWith("HERE ")) {
+        if (token == null || !token.startsWith("mpg ")) {
             return null;
         }
 
