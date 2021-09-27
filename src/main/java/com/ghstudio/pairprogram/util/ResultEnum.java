@@ -14,7 +14,9 @@ public enum ResultEnum {
     USER_NOT_FOUND(20002, "用户未找到"),
     AUTH_ERROR(20003, "权限不满足"),
     PARSE_TOKEN_ERROR(20004, "Token 解析失败"),
-    JSON_PARSE_ERROR(20005, "json解析失败");
+    JSON_PARSE_ERROR(20005, "json解析失败"),
+    Message_Send_Error(20006, "信息发送失败"),
+    Record_Existed(2007, "记录已存在");
 
     private int code;
     private String msg;

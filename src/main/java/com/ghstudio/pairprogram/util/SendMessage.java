@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 @Component
 public class SendMessage {
@@ -44,5 +45,20 @@ public class SendMessage {
             e.printStackTrace();
             throw new MessageSendFailedException();
         }
+    }
+
+
+    /**
+     * generateVerificationCode 使用随机数生成六位数验证码
+     *
+     * @return String 验证码
+     */
+    public static String generateVerificationCode() {
+        Random random = new Random();
+        StringBuilder code = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
+            code.append(random.nextInt(10));
+        }
+        return code.toString();
     }
 }
