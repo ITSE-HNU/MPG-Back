@@ -26,7 +26,7 @@ public class MVCConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new AuthHandler(userRepository, token)).
                 addPathPatterns("/**").
-                excludePathPatterns("/login");
+                excludePathPatterns("/login", "/register", "/verify");
     }
 
     @Override
