@@ -5,6 +5,9 @@ import lombok.Data;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+/**
+ * UserRequestBody 用户操作的请求参数 增删改查
+ */
 public class UserRequestBody {
     @Data
     public static class AddUserRequestBody {

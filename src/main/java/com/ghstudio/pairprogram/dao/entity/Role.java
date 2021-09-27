@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * Role 用户角色表定义
+ */
 @Data
 public class Role {
     private int id;

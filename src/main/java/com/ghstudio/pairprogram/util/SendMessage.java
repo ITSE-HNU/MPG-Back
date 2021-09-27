@@ -12,6 +12,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * SendMessage 短信发送封装工具
+ */
 @Component
 public class SendMessage {
     private static HazelnutCloudConfig hazelnutCloudConfig;

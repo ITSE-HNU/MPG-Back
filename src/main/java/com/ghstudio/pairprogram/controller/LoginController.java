@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+/**
+ * LoginController 登陆控制器
+ */
 @RestController
 public class LoginController {
     private final Logger logger = LoggerFactory.getLogger(LoginController.class);
@@ -25,6 +28,12 @@ public class LoginController {
     private LoginService loginService;
 
 
+    /**
+     * Login 登陆
+     *
+     * @param req LoginRequestBody: 用户名 密码
+     * @return LoginResponseBody: token role id name
+     */
     @PostMapping("/login")
     public Result<LoginResponseBody> Login(@Valid @RequestBody LoginRequestBody req) {
         try {

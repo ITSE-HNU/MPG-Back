@@ -4,6 +4,9 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * LoginRequestBody 请求体参数定义 用户名 密码
+ */
 @Data
 public class LoginRequestBody {
     @NotEmpty

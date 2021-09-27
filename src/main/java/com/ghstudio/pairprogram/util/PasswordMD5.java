@@ -5,7 +5,16 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * PasswordMD5 MD5 加密工具
+ */
 public class PasswordMD5 {
+    /**
+     * getPasswordMD5 获取 MD5 加密之后的密码
+     *
+     * @param password 传入代价密的密码
+     * @return String 加密之后的 Password
+     */
     public static String getPasswordMD5(String password) {
         if (password == null) {
             return null;

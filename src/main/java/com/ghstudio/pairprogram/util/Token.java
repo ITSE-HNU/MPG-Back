@@ -13,11 +13,20 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Token token 操作封装工具
+ */
 @Component
 public class Token {
     @Resource
     private TokenConfig tokenConfig;
 
+    /**
+     * sign 登陆时发布 token
+     *
+     * @param id 用户 id
+     * @return String token 字符串
+     */
     public String sign(int id) {
         //过期时间
         Date date = new Date(System.currentTimeMillis() + tokenConfig.getExpireDate());
@@ -36,6 +45,12 @@ public class Token {
                 .sign(algorithm);
     }
 
+    /**
+     * verify 解析 token
+     *
+     * @param token 传入的 token
+     * @return Integer 用户的 id
+     */
     public Integer verify(String token) {
         Algorithm algorithm = Algorithm.HMAC256(tokenConfig.getSecret());
         JWTVerifier verifier = JWT.require(algorithm).build();
