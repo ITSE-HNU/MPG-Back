@@ -3,6 +3,9 @@ package com.ghstudio.pairprogram.util;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * ResultEnum 预定义错误返回
+ */
 @Getter
 @AllArgsConstructor
 public enum ResultEnum {

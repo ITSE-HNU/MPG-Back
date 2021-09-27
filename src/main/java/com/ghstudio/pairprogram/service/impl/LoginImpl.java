@@ -14,6 +14,9 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
+/**
+ * LoginImpl 登陆接口实现
+ */
 @Component
 public class LoginImpl implements LoginService {
     @Resource
@@ -22,6 +25,15 @@ public class LoginImpl implements LoginService {
     @Resource
     Token token;
 
+    /**
+     * UserLoginService 用户登陆接口
+     *
+     * @param username 用户名
+     * @param password 密码
+     * @return LoginResponseBody 用户登陆请求返回体
+     * @throws PasswordErrorException 密码错误
+     * @throws UserNotFoundException  用户不存在
+     */
     @Override
     public LoginResponseBody UserLoginService(String username, String password)
             throws PasswordErrorException, UserNotFoundException, SignTokenException {

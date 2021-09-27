@@ -2,6 +2,10 @@ package com.ghstudio.pairprogram.util;
 
 import lombok.Data;
 
+/**
+ * Result 统一封装函数
+ * @param <V> V 传入类型
+ */
 @Data
 public class Result<V> {
     private int code;

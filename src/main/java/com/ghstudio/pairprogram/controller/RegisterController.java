@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+/**
+ * RegisterController 用户注册 Controller
+ */
 @RestController
 public class RegisterController {
     private final Logger logger = LoggerFactory.getLogger(RegisterController.class);
@@ -22,11 +25,22 @@ public class RegisterController {
     @Resource
     private RegisterService registerService;
 
+    /**
+     * Register 注册
+     *
+     * @return null
+     */
     @PostMapping("/register")
     public Result<?> Register() {
         return Result.success(null);
     }
 
+    /**
+     * SendRegisterCode 发送验证码
+     *
+     * @param req 请求参数 电话号码
+     * @return null（不出错）
+     */
     @PostMapping("/verify")
     public Result<?> SendRegisterCode(@Valid @RequestBody RegisterRequestBody req) {
         try {
