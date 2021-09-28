@@ -1,0 +1,16 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ghstudio.pairprogram.dao.repository.VerifyRepository">
+    <select id="getCodeByPhone" resultType="com.ghstudio.pairprogram.dao.entity.Verify">
+        SELECT *
+        FROM verify
+        WHERE phone = #{phone}
+        ORDER BY create_at desc
+    </select>
+
+    <insert id="createVerify" parameterType="com.ghstudio.pairprogram.dao.entity.Verify" useGeneratedKeys="true"
+            keyProperty="id" keyColumn="id">
+        INSERT INTO verify(phone, code, create_at)
+        VALUES (#{phone}, #{code}, now())
+    </insert>
+</mapper>
