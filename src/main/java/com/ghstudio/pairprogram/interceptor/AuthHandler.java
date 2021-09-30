@@ -1,7 +1,6 @@
 package com.ghstudio.pairprogram.interceptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ghstudio.pairprogram.dao.entity.Route;
 import com.ghstudio.pairprogram.dao.entity.User;
 import com.ghstudio.pairprogram.dao.repository.UserRepository;
 import com.ghstudio.pairprogram.util.Result;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 public class AuthHandler implements HandlerInterceptor {
     UserRepository userRepository;
@@ -50,21 +48,6 @@ public class AuthHandler implements HandlerInterceptor {
         printWriter.flush();
     }
 
-    private void authError(HttpServletResponse response) throws IOException {
-        response.setStatus(403);
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json; charset=utf-8");
-
-        PrintWriter printWriter = response.getWriter();
-        ObjectMapper mapper = new ObjectMapper();
-        printWriter.append(mapper.writeValueAsString(Result.error(ResultEnum.AUTH_ERROR)));
-        printWriter.flush();
-    }
-
-    private boolean judgeUserAuth(Route route, String path, String method) {
-        return path.matches("^" + route.getPath() + "$") && method.equalsIgnoreCase(route.getMethod());
-    }
-
     @Override
     public boolean preHandle(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Object handler) throws Exception {
         final String tokenString = getAuthorizationFromHeader(request);
@@ -76,23 +59,6 @@ public class AuthHandler implements HandlerInterceptor {
         try {
             final int id = token.verify(tokenString);
             User user = userRepository.getUserByID(id);
-            final List<Route> routes = user.getRole().getRouteList();
-            final String path = request.getRequestURI();
-            final String method = request.getMethod();
-
-            boolean flag = false;
-            for (Route route : routes) {
-                if (judgeUserAuth(route, path, method)) {
-                    flag = true;
-                    break;
-                }
-            }
-
-            if (!flag) {
-                authError(response);
-                return false;
-            }
-
             request.getSession().setAttribute("currentUser", user);
             return true;
         } catch (Exception e) {
