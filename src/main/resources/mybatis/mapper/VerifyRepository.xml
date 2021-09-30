@@ -6,6 +6,7 @@
         FROM verify
         WHERE phone = #{phone}
         ORDER BY create_at desc
+        LIMIT 1
     </select>
 
     <insert id="createVerify" parameterType="com.ghstudio.pairprogram.dao.entity.Verify" useGeneratedKeys="true"
