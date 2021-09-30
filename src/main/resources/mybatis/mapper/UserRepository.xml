@@ -4,28 +4,23 @@
     <resultMap id="userMap" type="com.ghstudio.pairprogram.dao.entity.User">
         <id property="id" column="id"/>
         <result property="username" column="username"/>
-        <result property="nickname" column="nickname"/>
         <result property="password" column="password"/>
-        <result property="roleID" column="role_id"/>
-        <association property="role" column="role_id"
-                     select="com.ghstudio.pairprogram.dao.repository.RoleRepository.getRoleByID"
-                     javaType="com.ghstudio.pairprogram.dao.entity.Role"/>
     </resultMap>
 
     <select id="getUserByUsername" resultMap="userMap">
-        SELECT id, username, nickname, password, role_id
+        SELECT id, username, password
         FROM users
         WHERE username = #{username}
     </select>
 
     <select id="getUserByID" resultMap="userMap">
-        SELECT id, username, nickname, password, role_id
+        SELECT id, username, password
         FROM users
         WHERE id = #{id}
     </select>
 
     <select id="queryUser" resultMap="userMap">
-        SELECT id, username, nickname, password, role_id
+        SELECT id, username,password
         FROM users
         <where>
             <if test="username != null and username!= ''">
@@ -55,8 +50,8 @@
     </select>
 
     <insert id="addUser" parameterType="com.ghstudio.pairprogram.dao.entity.User" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-        insert into users (username, nickname, password, role_id)
-        VALUES (#{username}, #{nickname}, #{password}, #{roleID})
+        insert into users (username, password)
+        VALUES (#{username}, #{password})
     </insert>
 
     <update id="updateUser" parameterType="com.ghstudio.pairprogram.dao.entity.User" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
@@ -66,16 +61,8 @@
                 username = #{username},
             </if>
 
-            <if test="nickname != null and nickname != ''">
-                nickname = #{nickname},
-            </if>
-
             <if test="password != null and password != ''">
                 password = #{password},
-            </if>
-
-            <if test="roleID != null">
-                role_id = #{roleID}
             </if>
         </set>
         where id = #{id}
