@@ -4,12 +4,14 @@ import com.ghstudio.pairprogram.dao.entity.User;
 import com.ghstudio.pairprogram.dao.repository.UserRepository;
 import com.ghstudio.pairprogram.service.UserDealService;
 import com.ghstudio.pairprogram.util.PasswordMD5;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
 /**
  * UserDealImpl 用户操作接口实现
  */
+@Component
 public class UserDealImpl implements UserDealService {
     @Resource
     UserRepository userRepository;
