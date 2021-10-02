@@ -30,11 +30,11 @@ public class FormatDate {
         return simpleDateFormat.format(date);
     }
 
-    public static long getTimeMillSeconds(Date date) {
+    public static long getTimeMillSeconds(String date) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         long result = -1;
         try {
-            result = simpleDateFormat.parse(simpleDateFormat.format(date)).getTime();
+            result = simpleDateFormat.parse(date).getTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }
