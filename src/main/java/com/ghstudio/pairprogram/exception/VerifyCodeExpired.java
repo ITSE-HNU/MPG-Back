@@ -1,4 +1,4 @@
 package com.ghstudio.pairprogram.exception;
 
-public class VerifyCodeExpired extends RuntimeException{
+public class VerifyCodeExpired extends RuntimeException {
 }

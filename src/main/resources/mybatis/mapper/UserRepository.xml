@@ -49,12 +49,14 @@
         </where>
     </select>
 
-    <insert id="addUser" parameterType="com.ghstudio.pairprogram.dao.entity.User" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+    <insert id="addUser" parameterType="com.ghstudio.pairprogram.dao.entity.User" useGeneratedKeys="true"
+            keyProperty="id" keyColumn="id">
         insert into users (username, password)
         VALUES (#{username}, #{password})
     </insert>
 
-    <update id="updateUser" parameterType="com.ghstudio.pairprogram.dao.entity.User" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+    <update id="updateUser" parameterType="com.ghstudio.pairprogram.dao.entity.User" useGeneratedKeys="true"
+            keyColumn="id" keyProperty="id">
         update users
         <set>
             <if test="username != null and username != ''">

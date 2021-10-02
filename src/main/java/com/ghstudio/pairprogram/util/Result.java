@@ -4,6 +4,7 @@ import lombok.Data;
 
 /**
  * Result 统一封装函数
+ *
  * @param <V> V 传入类型
  */
 @Data
