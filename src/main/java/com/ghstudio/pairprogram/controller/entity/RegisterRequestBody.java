@@ -11,4 +11,8 @@ import javax.validation.constraints.NotEmpty;
 public class RegisterRequestBody {
     @NotEmpty
     private String phoneNumber;
+    @NotEmpty
+    private String password;
+    @NotEmpty
+    private String verifyCode;
 }

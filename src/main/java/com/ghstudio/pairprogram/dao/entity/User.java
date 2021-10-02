@@ -12,10 +12,7 @@ import lombok.experimental.Tolerate;
 public class User {
     private int id;
     private String username;
-    private String nickname;
     private String password;
-    private Integer roleID;
-    private Role role;
 
     @Tolerate
     public User() {

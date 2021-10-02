@@ -1,11 +1,13 @@
 package com.ghstudio.pairprogram.dao.repository;
 
-import com.ghstudio.pairprogram.dao.entity.Role;
+import com.ghstudio.pairprogram.dao.entity.Title;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Mapper
-public interface RoleRepository {
-    Role getRoleByID(int id);
+public interface TitleRepository {
+    List<Title> queryTitles(List<Integer> params);
 }

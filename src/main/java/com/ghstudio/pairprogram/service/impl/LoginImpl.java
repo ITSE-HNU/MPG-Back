@@ -60,7 +60,6 @@ public class LoginImpl implements LoginService {
                 id(user.getId()).
                 token(token).
                 username(user.getUsername()).
-                role(user.getRole().getValue()).
                 build();
     }
 }

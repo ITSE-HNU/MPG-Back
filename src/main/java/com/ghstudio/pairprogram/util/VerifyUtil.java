@@ -9,6 +9,6 @@ public class VerifyUtil {
         Date createdAt = verify.getCreatedAt();
         long current = System.currentTimeMillis();
         long created = FormatDate.getTimeMillSeconds(createdAt);
-        return (current - created) / 1000 / 60 > 5;
+        return (current - created) / 1000 / 60 <= 5;
     }
 }

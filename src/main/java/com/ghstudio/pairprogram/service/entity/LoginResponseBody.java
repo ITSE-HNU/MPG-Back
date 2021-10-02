@@ -12,5 +12,4 @@ public class LoginResponseBody {
     private String token;
     private int id;
     private String username;
-    private int role;
 }

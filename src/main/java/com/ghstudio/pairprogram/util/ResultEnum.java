@@ -19,7 +19,11 @@ public enum ResultEnum {
     PARSE_TOKEN_ERROR(20004, "Token 解析失败"),
     JSON_PARSE_ERROR(20005, "json解析失败"),
     Message_Send_Error(20006, "信息发送失败"),
-    Record_Existed(2007, "记录已存在");
+    Record_Existed(2007, "记录已存在"),
+    Verify_Code_Expired(20008, "验证码过期"),
+    Verify_Code_Not_Match(20009, "验证码不匹配"),
+    Verify_Code_Not_Found(20010, "验证码不存在"),
+    User_Found_Exists(20011, "用户已存在");
 
     private int code;
     private String msg;
