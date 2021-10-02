@@ -12,11 +12,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * PaperGetImpl 试卷分发请求接口实现
+ */
 @Component
 public class PaperGetImpl implements PaperGetService {
     @Resource
     TitleRepository titleRepository;
 
+    /**
+     * getPaper 获取试卷
+     *
+     * @param count 题目数量
+     * @param role  学历
+     * @return PaperResponseBody
+     */
     @Override
     public PaperResponseBody getPaper(Integer count, Integer role) {
         List<Integer> ids = IndexGenerate.generateIndex(count, role);

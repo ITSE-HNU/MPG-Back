@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
+/**
+ * PaperController 试卷分发控制器
+ */
 @RestController
 public class PaperController {
     private final Logger logger = LoggerFactory.getLogger(RegisterController.class);
@@ -19,6 +22,13 @@ public class PaperController {
     @Resource
     PaperGetService paperGetService;
 
+    /**
+     * getPaper 获取试卷
+     *
+     * @param count 题目数量
+     * @param role  学历
+     * @return PaperResponseBody 试卷
+     */
     @PostMapping("/question")
     public Result<PaperResponseBody> getPaper(@RequestParam(value = "count") Integer count,
                                               @RequestParam(value = "role") Integer role) {

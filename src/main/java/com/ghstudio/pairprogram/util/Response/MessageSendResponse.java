@@ -12,6 +12,7 @@ import lombok.Data;
 public class MessageSendResponse {
     @JsonProperty("code")
     private String code;
+
     @JsonProperty("data")
     private String data;
 }

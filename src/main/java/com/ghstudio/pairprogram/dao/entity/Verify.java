@@ -6,6 +6,9 @@ import lombok.experimental.Tolerate;
 
 import java.util.Date;
 
+/**
+ * Verify 验证码定义
+ */
 @Data
 @Builder
 public class Verify {

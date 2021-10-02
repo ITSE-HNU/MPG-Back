@@ -14,15 +14,30 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * AuthHandler 资源访问权限拦截器
+ */
 public class AuthHandler implements HandlerInterceptor {
     UserRepository userRepository;
     Token token;
 
+    /**
+     * AuthHandler constructor
+     *
+     * @param userRepository userRepository
+     * @param token          token
+     */
     public AuthHandler(UserRepository userRepository, Token token) {
         this.userRepository = userRepository;
         this.token = token;
     }
 
+    /**
+     * getAuthorizationFromHeader 获取 Http 请求头中携带的 token
+     *
+     * @param request http request
+     * @return token string
+     */
     private String getAuthorizationFromHeader(HttpServletRequest request) {
         final String token = request.getHeader("Authorization");
         if (token == null || !token.startsWith("mpg ")) {
@@ -37,6 +52,12 @@ public class AuthHandler implements HandlerInterceptor {
         return tokenArray[1];
     }
 
+    /**
+     * parseTokenError token 解析失败
+     *
+     * @param response HttpServletResponse http 响应
+     * @throws IOException IO 异常
+     */
     private void parseTokenError(HttpServletResponse response) throws IOException {
         response.setStatus(401);
         response.setCharacterEncoding("UTF-8");
@@ -48,6 +69,15 @@ public class AuthHandler implements HandlerInterceptor {
         printWriter.flush();
     }
 
+    /**
+     * preHandle 拦截 token 设置 currentUser
+     *
+     * @param request  http request
+     * @param response http response
+     * @param handler  指 controller 的 @RestController 注解下的"完整"方法名, 包含exception等字段信息
+     * @return boolean
+     * @throws Exception token 解析失败
+     */
     @Override
     public boolean preHandle(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Object handler) throws Exception {
         final String tokenString = getAuthorizationFromHeader(request);

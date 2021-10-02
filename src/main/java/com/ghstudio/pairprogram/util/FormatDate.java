@@ -30,6 +30,12 @@ public class FormatDate {
         return simpleDateFormat.format(date);
     }
 
+    /**
+     * getTimeMillSeconds 将时间转化为 ms
+     *
+     * @param date 日期
+     * @return long
+     */
     public static long getTimeMillSeconds(String date) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         long result = -1;

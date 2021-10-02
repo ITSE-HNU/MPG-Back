@@ -8,14 +8,9 @@ import javax.validation.constraints.NotEmpty;
  * UserRequestBody 用户操作的请求参数 增删改查
  */
 public class UserRequestBody {
-    @Data
-    public static class AddUserRequestBody {
-        @NotEmpty
-        private String username;
-        @NotEmpty
-        private String password;
-    }
-
+    /**
+     * ChangePasswdRequestBody 密码更换请求体  新密码
+     */
     @Data
     public static class ChangePasswdRequestBody {
         @NotEmpty

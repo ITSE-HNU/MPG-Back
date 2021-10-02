@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+/**
+ * UserDealController 用户处理控制器
+ */
 @RestController
 public class UserDealController {
     private final Logger logger = LoggerFactory.getLogger(UserDealController.class);
@@ -22,6 +25,13 @@ public class UserDealController {
     @Resource
     UserDealService userDealService;
 
+    /**
+     * changeOwnPassword 更换自己的密码
+     *
+     * @param user 当前用户
+     * @param req  ChangePasswdRequestBody 密码更换请求体
+     * @return null
+     */
     @PostMapping("/changePwd")
     public Result<?> changeOwnPassword(@CurrentUser User user, @Valid @RequestBody UserRequestBody.ChangePasswdRequestBody req) {
         try {
