@@ -7,6 +7,7 @@ import com.ghstudio.pairprogram.dao.repository.UserRepository;
 import com.ghstudio.pairprogram.dao.repository.VerifyRepository;
 import com.ghstudio.pairprogram.exception.*;
 import com.ghstudio.pairprogram.service.RegisterService;
+import com.ghstudio.pairprogram.util.PasswordMD5;
 import com.ghstudio.pairprogram.util.SendMessage;
 import com.ghstudio.pairprogram.util.VerifyUtil;
 import org.springframework.stereotype.Component;
@@ -76,8 +77,9 @@ public class RegisterImpl implements RegisterService {
             }
             userRepository.addUser(User.builder().
                     username(req.getPhoneNumber()).
-                    password(req.getPassword()).
+                    password(PasswordMD5.getPasswordMD5(req.getPassword())).
                     build());
+            return;
         }
         throw new VerifyNotFoundException();
     }

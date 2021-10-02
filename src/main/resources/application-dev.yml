@@ -28,7 +28,7 @@ token:
   secret: mpg
 
 hazelnut:
-  url: https://sms_developer.zhenzikj.com/sms/send.do
+  url: https://sms_developer.zhenzikj.com
   appId: 110087
   appSecret: 4120693a-d8b3-49ad-b419-49ade53964b0
-  templateId: 6896
+  templateId: 6966
