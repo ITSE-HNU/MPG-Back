@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
 public class PaperGetImpl implements PaperGetService {
@@ -25,9 +26,12 @@ public class PaperGetImpl implements PaperGetService {
 
         List<PaperResponseBody.Title> titleList = new ArrayList<>();
 
+        AtomicInteger i = new AtomicInteger();
+        i.getAndIncrement();
         result.forEach(item -> {
             PaperResponseBody.Title.TitleBuilder titleBuilder = PaperResponseBody.Title.builder();
-            titleBuilder.question(item.getQuestion()).
+            titleBuilder.id(i.getAndIncrement()).
+                    question(item.getQuestion()).
                     choiceA(item.getChoiceA()).
                     choiceB(item.getChoiceB()).
                     choiceC(item.getChoiceC()).

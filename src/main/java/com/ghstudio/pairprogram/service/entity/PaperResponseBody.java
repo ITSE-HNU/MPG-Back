@@ -19,6 +19,7 @@ public class PaperResponseBody {
     @Data
     @Builder
     public static class Title {
+        private int id;
         private String question;
         private String choiceA;
         private String choiceB;
